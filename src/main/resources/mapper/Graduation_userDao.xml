@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.ServerCloud.dao.IGraduation_userDao">
+
+    <select id="selectUser" resultType="Graduation_user" parameterType="java.lang.String">
+        SELECT * FROM Graduation_user WHERE username = #{username}
+    </select>
+    <select id="selectUserid" resultType="Graduation_user" parameterType="java.lang.String">
+        SELECT * FROM Graduation_user WHERE userid = #{userid}
+    </select>
+
+    <insert id="insertUser" parameterType="Graduation_user">
+        INSERT INTO Graduation_user (userid,username,password,balance)
+        VALUES (#{userid},#{username},#{password},#{balance})
+    </insert>
+
+    <update id="updatebalance" parameterType="Graduation_user">
+        update Graduation_user
+        <set>
+            balance=#{balance}
+        </set>
+        where userid=#{userid}
+    </update>
+
+
+    <update id="updatepassword" parameterType="Graduation_user">
+        update Graduation_user
+        <set>
+            password=#{password}
+        </set>
+        where userid=#{userid}
+    </update>
+
+
+
+</mapper>
